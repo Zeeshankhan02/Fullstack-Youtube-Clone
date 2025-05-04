@@ -17,7 +17,7 @@ import healthCheckRouter from './routes/health.route.js'
 import userRouter from './routes/user.routes.js'
 
 // routes declaration
-app.use("/api/v1/healthCheck",healthCheckRouter)
+app.use("/healthCheck",healthCheckRouter)
 app.use("/api/v1/users",userRouter)
 
 
