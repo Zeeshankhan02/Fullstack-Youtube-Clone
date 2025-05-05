@@ -1,9 +1,11 @@
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
+import { ensureTempDirExists } from './src/utils/initTempDir.util.js';
 
 
 const app = express()
+ensureTempDirExists();
 
 app.use(cors({
   origin:"*",
