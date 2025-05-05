@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
-import { ensureTempDirExists } from './src/utils/initTempDir.util.js';
+import { ensureTempDirExists } from './src/utils/tempfile.util.js';
 
 
 const app = express()
