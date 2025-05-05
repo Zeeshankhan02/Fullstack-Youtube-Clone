@@ -176,8 +176,8 @@ const logOutUser = asyncHandler(async (req, res) => {
   await User.findByIdAndUpdate(
     req.user._id,
     {
-      $set: {
-        refreshToken: undefined,
+      $unset: {
+        refreshToken:1,
       },
     },
     {
@@ -302,6 +302,8 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
 
   if (user?.avatar?.public_id) {
     await deleteOnCloudinary(user.avatar.public_id);
+    return res.status(200)
+    .json(new ApiResponse(200,{},"Old image deleted Successfully"))
   }
 
   const avatarLocalPath = req.file?.path;
@@ -331,6 +333,9 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
 
   if (user?.coverImage?.public_id) {
     await deleteOnCloudinary(user.coverImage.public_id);
+    return res.status(200)
+    .json(new ApiResponse(200,{},"Old image deleted Successfully"))
+  
   }
 
   const coverImageLocalPath = req.file?.path;
